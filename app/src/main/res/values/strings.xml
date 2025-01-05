@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">EMS admin</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+
+    <string name="previous">Previous</string>
+    <string name="create_your_company_admin_account">Create your company admin account</string>
+    <string name="password">Password</string>
+    <string name="create_account">Create Account</string>
+    <string name="copmany_organization_name">Copmany/Organization Name</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="email">Email</string>
+    <string name="image_showing_department_display_icon">Image showing department display/icon</string>
+    <string name="shows_image_of_a_project_selected_by_user">shows image of a project selected by user</string>
+    <string name="view_employees">View Employees</string>
+    <string name="end_date">End Date</string>
+    <string name="project_name">Project Name</string>
+    <string name="startdate">Start Date</string>
+    <string name="project_status">Project Status</string>
+    <string name="departmentname">Department Name</string>
+    <string name="image_button_description">Image_button_description</string>
+</resources>

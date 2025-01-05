@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".HomeActivity">
+
+    <ImageButton
+        android:id="@+id/imgBtnSettings"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="36dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="Image_button_description"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="@+id/imageButton7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageButton7"
+        app:layout_constraintTop_toTopOf="@+id/imageButton7"
+        app:layout_constraintVertical_bias="0.0"
+        tools:srcCompat="@drawable/settings_icon" />
+
+    <ImageButton
+        android:id="@+id/imgBtnChat"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="24dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/image_button_description"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="@+id/imgBtnInbox"
+        app:layout_constraintStart_toEndOf="@+id/imgBtnInbox"
+        app:layout_constraintTop_toTopOf="@+id/imgBtnInbox"
+        app:layout_constraintVertical_bias="0.0"
+        tools:srcCompat="@drawable/chat_icon" />
+
+    <ImageButton
+        android:id="@+id/imgBtnInbox"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="Image_button_description"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnCreateProjectOption"
+        app:layout_constraintVertical_bias="1.0"
+        tools:srcCompat="@drawable/inbox_icon" />
+
+    <TextView
+        android:id="@+id/tvHomeDepartments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Departments"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.124"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgBtnProfile" />
+
+    <TextView
+        android:id="@+id/tvHomeProjects"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Projects"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.114"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnCreateDepartmentOption" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcvDepartmentsList1"
+        android:layout_width="328dp"
+        android:layout_height="137dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvHomeDepartments" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcvProjectsList1"
+        android:layout_width="331dp"
+        android:layout_height="216dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.525"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvHomeProjects" />
+
+    <ImageButton
+        android:id="@+id/imgBtnProfile"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="Image_button_description"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.953"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@drawable/user_icon" />
+
+    <Button
+        android:id="@+id/btnCreateProjectOption"
+        android:layout_width="115dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:text="Create Project"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.138"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rcvProjectsList1" />
+
+    <ImageButton
+        android:id="@+id/imgBtnAddAny"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="24dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="add any department, project, employee or task"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="@+id/imgBtnChat"
+        app:layout_constraintStart_toEndOf="@+id/imgBtnChat"
+        app:layout_constraintTop_toTopOf="@+id/imgBtnChat"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/add_chat_icon" />
+
+    <Button
+        android:id="@+id/btnCreateDepartmentOption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Create Department"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.174"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rcvDepartmentsList1" />
+
+    <ImageButton
+        android:id="@+id/imageButton7"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="24dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:contentDescription="Change assignment of Department, Project, Employee or Task"
+        app:layout_constraintBottom_toBottomOf="@+id/imgBtnAddAny"
+        app:layout_constraintStart_toEndOf="@+id/imgBtnAddAny"
+        app:layout_constraintTop_toTopOf="@+id/imgBtnAddAny"
+        tools:srcCompat="@drawable/configure_icon" />
+</androidx.constraintlayout.widget.ConstraintLayout>
