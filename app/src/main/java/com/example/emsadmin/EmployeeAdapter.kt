@@ -26,7 +26,7 @@ class EmployeeAdapter(private val employeeList: MutableList<Employee>):
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EmployeeAdapter.ViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.employee_spinner_text_only, parent, false)
+            .inflate(R.layout.employee_recycle_view, parent, false)
         return ViewHolder(view)
     }
 

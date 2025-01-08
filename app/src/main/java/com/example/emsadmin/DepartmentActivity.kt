@@ -13,6 +13,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class DepartmentActivity : AppCompatActivity() {
@@ -37,9 +38,6 @@ class DepartmentActivity : AppCompatActivity() {
         navigateToAddDepartmentActivity()
         navigateToAddEmployeeActivity()
 
-        employeeListAssignedToDepartment = mutableListOf()
-        employeeListToDisplay = mutableListOf()
-
         spinnerDepartments = findViewById(R.id.spinnerDepartments)
         val departmentList = DepartmentManager.getDepartmentList().map{it.getDepartmentName() to it.getDepartmentID()}
         if (departmentList.isEmpty()) {
@@ -51,18 +49,20 @@ class DepartmentActivity : AppCompatActivity() {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerDepartments.adapter = adapter
         spinnerDepartments.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long){
                 selectedDepartmentID = departmentList[position].second
-                getEmployeesUnderDepartment(selectedDepartmentID)
+                //getEmployeesUnderDepartment(selectedDepartmentID)
             }
             override fun onNothingSelected(parent: AdapterView<*>?){
                 selectedDepartmentID = ""
             }
-        }/*
-        getEmployeesUnderDepartment(selectedDepartmentID)
+        }
+        //getEmployeesUnderDepartment(selectedDepartmentID)
+        employeeListToDisplay = mutableListOf()
         rcvEmployeeInDepartment = findViewById(R.id.rcvEmployeeInDepartment)
         val adapterEmp = EmployeeAdapter(employeeListToDisplay)
-        rcvEmployeeInDepartment.adapter = adapterEmp*/
+        rcvEmployeeInDepartment.adapter = adapterEmp
+        rcvEmployeeInDepartment.layoutManager = LinearLayoutManager(this)
 
     }
     private fun navigateToAddDepartmentActivity(){
@@ -83,6 +83,7 @@ class DepartmentActivity : AppCompatActivity() {
         val department = DepartmentManager.searchDepartmentObjByID(departmentID)
         val employeeListInDepartment = department?.getEmployeeList()
         val totalEmployeeList = EmployeeManager.getEmployeeList()
+        employeeListToDisplay = mutableListOf()
         if (employeeListInDepartment != null) {
             for(strID in employeeListInDepartment){
                 for(obj in totalEmployeeList){
