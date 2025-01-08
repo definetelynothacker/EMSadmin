@@ -42,7 +42,7 @@
             app:layout_constraintTop_toBottomOf="@+id/imageViewProject" />
 
         <TextView
-            android:id="@+id/tvProjectName"
+            android:id="@+id/tvEmployeeNameAdapter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
@@ -67,8 +67,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:text="@string/startdate"
-            app:layout_constraintStart_toStartOf="@+id/tvProjectName"
-            app:layout_constraintTop_toBottomOf="@+id/tvProjectName" />
+            app:layout_constraintStart_toStartOf="@+id/tvEmployeeNameAdapter"
+            app:layout_constraintTop_toBottomOf="@+id/tvEmployeeNameAdapter" />
 
         <TextView
             android:id="@+id/tvProjectStatus"
@@ -79,7 +79,7 @@
             android:text="@string/project_status"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.34"
-            app:layout_constraintStart_toEndOf="@+id/tvProjectName"
+            app:layout_constraintStart_toEndOf="@+id/tvEmployeeNameAdapter"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ProgressBar

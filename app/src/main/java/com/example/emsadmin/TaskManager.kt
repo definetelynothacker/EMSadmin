@@ -18,11 +18,11 @@ object TaskManager {
     fun getTaskList(): MutableList<Task>{
         return taskList
     }
-    fun searchTaskObjByID(taskID: String): Boolean{
+    fun searchTaskObjByID(taskID: String): Task?{
         for(obj in taskList){
             if(obj.getTaskID()==taskID)
-                return true
+                return obj
         }
-        return false
+        return null
     }
 }

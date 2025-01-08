@@ -13,7 +13,7 @@ class ProjectAdapter(private val projectList: MutableList<Project>):
 
 
     inner class ViewHolder(itemView: android.view.View): RecyclerView.ViewHolder(itemView){
-        val tvProjectName: TextView = itemView.findViewById(R.id.tvProjectName)
+        val tvProjectName: TextView = itemView.findViewById(R.id.tvEmployeeNameAdapter)
         val tvProjectStatus: TextView = itemView.findViewById(R.id.tvProjectStatus)
         val tvProjectStartDate: TextView = itemView.findViewById(R.id.tvProjectStartDate)
         val tvProjectEndDate: TextView = itemView.findViewById(R.id.tvProjectEndDate)

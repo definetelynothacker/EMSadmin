@@ -15,11 +15,11 @@ object EmployeeManager{
     fun getEmployeeList(): MutableList<Employee>{
         return employeeList
     }
-    fun searchEmployeeObjByID(empID: String): Boolean{
+    fun searchEmployeeObjByID(empID: String): Employee?{
         for(obj in employeeList){
             if(obj.getEmployeeID()==empID)
-                return true
+                return obj
         }
-        return false
+        return null
     }
 }

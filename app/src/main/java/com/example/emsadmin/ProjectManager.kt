@@ -170,11 +170,11 @@ object ProjectManager {
         )
     )
 
-    fun searchProjectObjByID(projID: String): Boolean{
+    fun searchProjectObjByID(projID: String): Project?{
         for(obj in projectList){
             if(obj.getProjectID()==projID)
-                return true
+                return obj
         }
-        return false
+        return null
     }
 }

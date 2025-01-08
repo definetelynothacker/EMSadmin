@@ -41,7 +41,7 @@
         app:layout_constraintTop_toBottomOf="@+id/spinnerDepartments" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/rcvEmployeeInDepartment"
         android:layout_width="240dp"
         android:layout_height="160dp"
         android:layout_marginTop="8dp"
@@ -70,7 +70,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.038"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+        app:layout_constraintTop_toBottomOf="@+id/rcvEmployeeInDepartment" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView2"

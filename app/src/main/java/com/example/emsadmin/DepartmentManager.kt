@@ -12,11 +12,11 @@ object DepartmentManager {
     fun getDepartmentList(): MutableList<Department>{
         return departmentList
     }
-    fun searchDepartmentObjByID(depID: String): Boolean{
+    fun searchDepartmentObjByID(depID: String): Department?{
         for(obj in departmentList){
             if(obj.getDepartmentID()==depID)
-                return true
+                return obj
         }
-        return false
+        return null
     }
 }
