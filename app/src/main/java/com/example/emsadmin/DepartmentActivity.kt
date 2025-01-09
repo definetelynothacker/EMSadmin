@@ -6,7 +6,6 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
-import android.widget.EditText
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -18,10 +17,10 @@ import androidx.recyclerview.widget.RecyclerView
 
 class DepartmentActivity : AppCompatActivity() {
 
-    private lateinit var btnCreateEmployee: Button
+    //private lateinit var btnCreateEmployee: Button
     private lateinit var spinnerDepartments: Spinner
     private lateinit var selectedDepartmentID: String
-    private lateinit var employeeListAssignedToDepartment: MutableList<Employee>
+    //private lateinit var employeeListAssignedToDepartment: MutableList<Employee>
     private lateinit var employeeListToDisplay: MutableList<Employee>
 
     private lateinit var rcvEmployeeInDepartment: RecyclerView
@@ -78,7 +77,7 @@ class DepartmentActivity : AppCompatActivity() {
             val intent = Intent(this, AddEmployeeActivity::class.java)
             startActivity(intent)
         }
-    }
+    }/*
     private fun getEmployeesUnderDepartment(departmentID: String){
         val department = DepartmentManager.searchDepartmentObjByID(departmentID)
         val employeeListInDepartment = department?.getEmployeeList()
@@ -92,5 +91,5 @@ class DepartmentActivity : AppCompatActivity() {
                 }
             }
         }
-    }
+    }*/
 }

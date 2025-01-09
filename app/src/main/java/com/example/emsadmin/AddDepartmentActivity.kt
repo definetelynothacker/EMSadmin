@@ -1,10 +1,6 @@
 package com.example.emsadmin
 
 import android.os.Bundle
-import android.view.View
-import android.widget.Adapter
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
@@ -22,11 +18,6 @@ class AddDepartmentActivity : AppCompatActivity() {
     private lateinit var spinnerAssignProjectToDep2: Spinner
     private lateinit var spinnerAssignEmployeeToDep2: Spinner
     private lateinit var spinnerAssignTaskToDep2: Spinner
-
-
-    //private lateinit var projectList: List<Pair<String, String>>
-    private lateinit var employeeList: List<Pair<String, String>>
-    private lateinit var taskList: List<Pair<String, String>>
 
     private lateinit var selectedProjectIDs: MutableList<String>
     private lateinit var selectedEmployeeIDs: MutableList<String>
