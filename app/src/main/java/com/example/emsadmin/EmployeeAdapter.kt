@@ -11,7 +11,7 @@ class EmployeeAdapter(private val employeeList: MutableList<Employee>):
 
 
     inner class ViewHolder(itemView: android.view.View): RecyclerView.ViewHolder(itemView){
-        val tvEmployeeNameAdapter: TextView = itemView.findViewById(R.id.tvEmployeeNameAdapter)
+        val tvEmployeeNameAdapter: TextView = itemView.findViewById(R.id.tvTaskNameAdapter)
         /*
         init{
             itemView.setOnClickListener{
@@ -37,5 +37,12 @@ class EmployeeAdapter(private val employeeList: MutableList<Employee>):
 
     override fun getItemCount(): Int {
         return employeeList.size
+    }
+    fun updateEmployeeList(newList: MutableList<Employee>){
+        employeeList.clear()
+        val posStart = employeeList.size-1
+        val posEnd = newList.size-1
+        employeeList.addAll(newList)
+        notifyItemRangeChanged(posStart,posEnd)
     }
 }

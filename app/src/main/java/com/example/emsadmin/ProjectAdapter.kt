@@ -13,12 +13,12 @@ class ProjectAdapter(private val projectList: MutableList<Project>):
 
 
     inner class ViewHolder(itemView: android.view.View): RecyclerView.ViewHolder(itemView){
-        val tvProjectName: TextView = itemView.findViewById(R.id.tvEmployeeNameAdapter)
-        val tvProjectStatus: TextView = itemView.findViewById(R.id.tvProjectStatus)
-        val tvProjectStartDate: TextView = itemView.findViewById(R.id.tvProjectStartDate)
-        val tvProjectEndDate: TextView = itemView.findViewById(R.id.tvProjectEndDate)
+        val tvProjectName: TextView = itemView.findViewById(R.id.tvTaskNameAdapter)
+        val tvProjectStatus: TextView = itemView.findViewById(R.id.tvTaskStatusAdapter)
+        val tvProjectStartDate: TextView = itemView.findViewById(R.id.tvTaskStartDateAdapter)
+        val tvProjectEndDate: TextView = itemView.findViewById(R.id.tvTaskEndDateAdapter)
         val pbProjectCompletion: ProgressBar = itemView.findViewById(R.id.pbProjectCompletion)
-        val imageViewProject: ImageView = itemView.findViewById(R.id.imageViewProject)
+        val imageViewProject: ImageView = itemView.findViewById(R.id.imageViewTaskAdapter)
 
         init{
             itemView.setOnClickListener{
@@ -52,5 +52,12 @@ class ProjectAdapter(private val projectList: MutableList<Project>):
 
     override fun getItemCount(): Int {
         return projectList.size
+    }
+    fun updateProjectList(newList: MutableList<Project>){
+        projectList.clear()
+        val posStart = projectList.size-1
+        val posEnd = newList.size-1
+        projectList.addAll(newList)
+        notifyItemRangeChanged(posStart, posEnd)
     }
 }

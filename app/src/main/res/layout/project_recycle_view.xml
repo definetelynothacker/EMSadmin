@@ -21,12 +21,12 @@
             android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/imageViewProject"
+            android:id="@+id/imageViewTaskAdapter"
             android:layout_width="130dp"
             android:layout_height="130dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="12dp"
-            android:contentDescription="project image"
+            android:contentDescription="@string/project_image"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/default_project_icon" />
@@ -39,39 +39,39 @@
             android:text="@string/view_employees"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageViewProject" />
+            app:layout_constraintTop_toBottomOf="@+id/imageViewTaskAdapter" />
 
         <TextView
-            android:id="@+id/tvEmployeeNameAdapter"
+            android:id="@+id/tvTaskNameAdapter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:layout_marginTop="12dp"
             android:text="@string/project_name"
-            app:layout_constraintStart_toEndOf="@+id/imageViewProject"
+            app:layout_constraintStart_toEndOf="@+id/imageViewTaskAdapter"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tvProjectEndDate"
+            android:id="@+id/tvTaskEndDateAdapter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:text="@string/end_date"
-            app:layout_constraintStart_toEndOf="@+id/tvProjectStartDate"
-            app:layout_constraintStart_toStartOf="@+id/tvProjectStatus"
-            app:layout_constraintTop_toBottomOf="@+id/tvProjectStatus" />
+            app:layout_constraintStart_toEndOf="@+id/tvTaskStartDateAdapter"
+            app:layout_constraintStart_toStartOf="@+id/tvTaskStatusAdapter"
+            app:layout_constraintTop_toBottomOf="@+id/tvTaskStatusAdapter" />
 
         <TextView
-            android:id="@+id/tvProjectStartDate"
+            android:id="@+id/tvTaskStartDateAdapter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:text="@string/startdate"
-            app:layout_constraintStart_toStartOf="@+id/tvEmployeeNameAdapter"
-            app:layout_constraintTop_toBottomOf="@+id/tvEmployeeNameAdapter" />
+            app:layout_constraintStart_toStartOf="@+id/tvTaskNameAdapter"
+            app:layout_constraintTop_toBottomOf="@+id/tvTaskNameAdapter" />
 
         <TextView
-            android:id="@+id/tvProjectStatus"
+            android:id="@+id/tvTaskStatusAdapter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
@@ -79,7 +79,7 @@
             android:text="@string/project_status"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.34"
-            app:layout_constraintStart_toEndOf="@+id/tvEmployeeNameAdapter"
+            app:layout_constraintStart_toEndOf="@+id/tvTaskNameAdapter"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ProgressBar
@@ -93,7 +93,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.446"
             app:layout_constraintStart_toEndOf="@+id/btnViewProjectEmployeesAssigned"
-            app:layout_constraintTop_toBottomOf="@+id/tvProjectStartDate"
+            app:layout_constraintTop_toBottomOf="@+id/tvTaskStartDateAdapter"
             app:layout_constraintVertical_bias="0.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

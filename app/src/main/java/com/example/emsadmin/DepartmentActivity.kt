@@ -20,10 +20,13 @@ class DepartmentActivity : AppCompatActivity() {
     //private lateinit var btnCreateEmployee: Button
     private lateinit var spinnerDepartments: Spinner
     private lateinit var selectedDepartmentID: String
-    //private lateinit var employeeListAssignedToDepartment: MutableList<Employee>
     private lateinit var employeeListToDisplay: MutableList<Employee>
+    private lateinit var projectListToDisplay: MutableList<Project>
 
     private lateinit var rcvEmployeeInDepartment: RecyclerView
+    private lateinit var rcvProjectInDepartment: RecyclerView
+    private lateinit var adapterEmp: EmployeeAdapter
+    private lateinit var adapterProj: ProjectAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,19 +53,30 @@ class DepartmentActivity : AppCompatActivity() {
         spinnerDepartments.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long){
                 selectedDepartmentID = departmentList[position].second
-                //getEmployeesUnderDepartment(selectedDepartmentID)
+                employeeListToDisplay = getEmployeesUnderDepartment(selectedDepartmentID)
+                projectListToDisplay = getProjectUnderDepartment(selectedDepartmentID)
+                adapterEmp.updateEmployeeList(employeeListToDisplay)
+                adapterProj.updateProjectList(projectListToDisplay)
+
             }
             override fun onNothingSelected(parent: AdapterView<*>?){
                 selectedDepartmentID = ""
+                adapterEmp.updateEmployeeList(employeeListToDisplay)
+                adapterProj.updateProjectList(projectListToDisplay)
             }
         }
         //getEmployeesUnderDepartment(selectedDepartmentID)
         employeeListToDisplay = mutableListOf()
         rcvEmployeeInDepartment = findViewById(R.id.rcvEmployeeInDepartment)
-        val adapterEmp = EmployeeAdapter(employeeListToDisplay)
+        adapterEmp = EmployeeAdapter(employeeListToDisplay)
         rcvEmployeeInDepartment.adapter = adapterEmp
         rcvEmployeeInDepartment.layoutManager = LinearLayoutManager(this)
 
+        projectListToDisplay = mutableListOf()
+        rcvProjectInDepartment = findViewById(R.id.rcvProjectInDepartment)
+        adapterProj = ProjectAdapter(projectListToDisplay)
+        rcvProjectInDepartment.adapter = adapterProj
+        rcvProjectInDepartment.layoutManager = LinearLayoutManager(this)
     }
     private fun navigateToAddDepartmentActivity(){
         val btnCreateDepartment: Button = findViewById(R.id.btnCreateDepartment)
@@ -77,19 +91,32 @@ class DepartmentActivity : AppCompatActivity() {
             val intent = Intent(this, AddEmployeeActivity::class.java)
             startActivity(intent)
         }
-    }/*
-    private fun getEmployeesUnderDepartment(departmentID: String){
+    }
+    private fun getEmployeesUnderDepartment(departmentID: String): MutableList<Employee>{
+        var employeeListToAdd: MutableList<Employee> = mutableListOf()
         val department = DepartmentManager.searchDepartmentObjByID(departmentID)
-        val employeeListInDepartment = department?.getEmployeeList()
-        val totalEmployeeList = EmployeeManager.getEmployeeList()
-        employeeListToDisplay = mutableListOf()
-        if (employeeListInDepartment != null) {
-            for(strID in employeeListInDepartment){
-                for(obj in totalEmployeeList){
-                    if(obj.getEmployeeID()==strID)
-                       employeeListToDisplay.add(obj)
-                }
+        val employeeListInDepartment = department?.getEmployeeList()?: mutableListOf()
+        //val totalEmployeeList = EmployeeManager.getEmployeeList()
+        /*
+        for(strID in employeeListInDepartment){
+            totalEmployeeList.find{it.getEmployeeID() == strID}?.let{
+                employeeListToAdd.add(it)
             }
-        }
-    }*/
+        }*/
+        employeeListToAdd = EmployeeManager.getEmployeeList()
+        return employeeListToAdd
+    }
+    private fun getProjectUnderDepartment(departmentID: String): MutableList<Project>{
+        val department = DepartmentManager.searchDepartmentObjByID(departmentID)
+        val employeeListInDepartment = department?.getEmployeeList()?: mutableListOf()
+        //val totalEmployeeList = EmployeeManager.getEmployeeList()
+        /*
+        for(strID in employeeListInDepartment){
+            totalEmployeeList.find{it.getEmployeeID() == strID}?.let{
+                employeeListToAdd.add(it)
+            }
+        }*/
+        val projectListToAdd: MutableList<Project> = ProjectManager.projectList
+        return projectListToAdd
+    }
 }

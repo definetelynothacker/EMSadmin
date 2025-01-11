@@ -21,4 +21,9 @@
     <string name="project_status">Project Status</string>
     <string name="departmentname">Department Name</string>
     <string name="image_button_description">Image_button_description</string>
+    <string name="project_image">project image</string>
+    <string name="task_name">Task Name</string>
+    <string name="task_status">Task Status</string>
+    <string name="employee_name">Employee name</string>
+    <string name="employee_image">Employee image</string>
 </resources>
