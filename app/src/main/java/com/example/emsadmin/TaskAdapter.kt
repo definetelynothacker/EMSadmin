@@ -18,9 +18,9 @@ class TaskAdapter(private val taskList: MutableList<Task>):
         init{
             itemView.setOnClickListener{
                 val position = adapterPosition
-                val clickedDepartment = taskList[position]
+                val clickedTask = taskList[position]
 
-                val intent = Intent(itemView.context, DepartmentActivity::class.java)
+                val intent = Intent(itemView.context, TaskActivity::class.java)
 
                 itemView.context.startActivity(intent)
             }

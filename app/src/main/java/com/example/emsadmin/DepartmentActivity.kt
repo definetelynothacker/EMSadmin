@@ -7,6 +7,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -17,7 +18,9 @@ import androidx.recyclerview.widget.RecyclerView
 
 class DepartmentActivity : AppCompatActivity() {
 
-    //private lateinit var btnCreateEmployee: Button
+    private lateinit var tvDepartmentNameDetails: TextView
+    private lateinit var btnCreateDepartment: Button
+    private lateinit var btnCreateEmployee: Button
     private lateinit var spinnerDepartments: Spinner
     private lateinit var selectedDepartmentID: String
     private lateinit var employeeListToDisplay: MutableList<Employee>
@@ -40,6 +43,8 @@ class DepartmentActivity : AppCompatActivity() {
         navigateToAddDepartmentActivity()
         navigateToAddEmployeeActivity()
 
+        tvDepartmentNameDetails = findViewById(R.id.tvDepartmentNameDetails)
+
         spinnerDepartments = findViewById(R.id.spinnerDepartments)
         val departmentList = DepartmentManager.getDepartmentList().map{it.getDepartmentName() to it.getDepartmentID()}
         if (departmentList.isEmpty()) {
@@ -57,7 +62,7 @@ class DepartmentActivity : AppCompatActivity() {
                 projectListToDisplay = getProjectUnderDepartment(selectedDepartmentID)
                 adapterEmp.updateEmployeeList(employeeListToDisplay)
                 adapterProj.updateProjectList(projectListToDisplay)
-
+                tvDepartmentNameDetails.text = departmentNames[position]
             }
             override fun onNothingSelected(parent: AdapterView<*>?){
                 selectedDepartmentID = ""
@@ -86,7 +91,7 @@ class DepartmentActivity : AppCompatActivity() {
         }
     }
     private fun navigateToAddEmployeeActivity(){
-        val  btnCreateEmployee1: Button = findViewById(R.id.btnCreateEmployee1)
+        val  btnCreateEmployee1: Button = findViewById(R.id.btnCreateEmployee)
         btnCreateEmployee1.setOnClickListener{
             val intent = Intent(this, AddEmployeeActivity::class.java)
             startActivity(intent)

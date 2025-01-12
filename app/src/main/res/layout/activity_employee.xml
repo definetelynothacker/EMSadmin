@@ -7,4 +7,88 @@
     android:layout_height="match_parent"
     tools:context=".EmployeeActivity">
 
+    <Spinner
+        android:id="@+id/spinnerEmployeeList"
+        android:layout_width="230dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.088"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvEmployeeNameDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Employee FName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.053"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerEmployeeList" />
+
+    <TextView
+        android:id="@+id/tvDepartmentEmployeeBelongsTo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="Departments Assigned To"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.064"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvEmployeeNameDetails" />
+
+    <TextView
+        android:id="@+id/tvProjectsEmployeesAssignedTo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Projets Assigned To"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.055"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rcvDepartmentEmployeeBelongsTo" />
+
+    <TextView
+        android:id="@+id/tvTaskAssignedToEmployee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Task Assigned To"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.053"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rcvProjectsEmployeesAssignedTo" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcvDepartmentEmployeeBelongsTo"
+        android:layout_width="288dp"
+        android:layout_height="112dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.13"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDepartmentEmployeeBelongsTo" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcvProjectsEmployeesAssignedTo"
+        android:layout_width="288dp"
+        android:layout_height="112dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.13"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvProjectsEmployeesAssignedTo" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcvTaskAssignedToEmployee"
+        android:layout_width="288dp"
+        android:layout_height="112dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.13"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTaskAssignedToEmployee"
+        app:layout_constraintVertical_bias="0.058" />
 </androidx.constraintlayout.widget.ConstraintLayout>

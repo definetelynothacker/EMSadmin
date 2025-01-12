@@ -1,6 +1,7 @@
 package com.example.emsadmin
 
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
@@ -12,16 +13,16 @@ class EmployeeAdapter(private val employeeList: MutableList<Employee>):
 
     inner class ViewHolder(itemView: android.view.View): RecyclerView.ViewHolder(itemView){
         val tvEmployeeNameAdapter: TextView = itemView.findViewById(R.id.tvTaskNameAdapter)
-        /*
+
         init{
             itemView.setOnClickListener{
                 val position = adapterPosition
-                val clickedProject = employeeList[position]
+                val clickedEmployee = employeeList[position]
 
-                val intent = Intent(itemView.context, ProjectActivity::class.java)
+                val intent = Intent(itemView.context, EmployeeActivity::class.java)
                 itemView.context.startActivity(intent)
             }
-        }*/
+        }
 
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EmployeeAdapter.ViewHolder {

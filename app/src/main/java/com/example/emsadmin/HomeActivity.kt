@@ -2,7 +2,6 @@ package com.example.emsadmin
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -58,7 +57,7 @@ class HomeActivity : AppCompatActivity(){
         }
     }
     private fun navigateToAddEmployeeActivity(){
-        val btnCreateEmployee1: Button = findViewById(R.id.btnCreateEmployee1)
+        val btnCreateEmployee1: Button = findViewById(R.id.btnCreateEmployee)
         btnCreateEmployee1.setOnClickListener{
             val intent = Intent(this, AddEmployeeActivity::class.java)
             startActivity(intent)
