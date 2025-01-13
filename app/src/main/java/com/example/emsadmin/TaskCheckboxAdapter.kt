@@ -7,8 +7,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class TaskAdapter(private val taskList: MutableList<Task>):
-    RecyclerView.Adapter<TaskAdapter.ViewHolder>(){
+class TaskCheckboxAdapter(private val taskList: MutableList<Task>):
+    RecyclerView.Adapter<TaskCheckboxAdapter.ViewHolder>(){
 
 
     inner class ViewHolder(itemView: android.view.View): RecyclerView.ViewHolder(itemView){
@@ -27,13 +27,13 @@ class TaskAdapter(private val taskList: MutableList<Task>):
         }
 
     }
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskCheckboxAdapter.ViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.task_recycle_view, parent, false)
+            .inflate(R.layout.task_checkbox_recycle_view, parent, false)
         return ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: TaskAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: TaskCheckboxAdapter.ViewHolder, position: Int) {
         val task = taskList[position]
         holder.tvTaskNameAdapter.text = task.getTaskName()
         holder.imageViewTaskAdapter.setImageResource(R.drawable.task_icon)

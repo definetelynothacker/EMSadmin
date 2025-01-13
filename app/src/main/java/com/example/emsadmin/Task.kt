@@ -28,8 +28,10 @@ class Task(
     fun getTaskEndDate(): String{
         return this.taskEndDate
     }
-    fun getTaskStatus(): Boolean{
-        return this.taskStatus
+    fun getTaskStatus(): String{
+        if(taskStatus)
+            return "Complete"
+        return "Incomplete"
     }
     fun getPeriodStatus(): Int{
         return this.periodStatus

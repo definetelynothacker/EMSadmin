@@ -52,17 +52,17 @@ class EmployeeActivity : AppCompatActivity() {
             }
         }
         val departments = DepartmentManager.getDepartmentList()
-        val adapterDep = DepartmentAdapter(departments)
+        val adapterDep = DepartmentCheckboxAdapter(departments)
         rcvDepartmentEmployeeBelongsTo.adapter = adapterDep
         rcvDepartmentEmployeeBelongsTo.layoutManager = LinearLayoutManager(this)
 
         val projects = ProjectManager.projectList
-        val adapterProj = ProjectAdapter(projects)
+        val adapterProj = ProjectCheckboxAdapter(projects)
         rcvProjectsEmployeesAssignedTo.adapter = adapterProj
         rcvProjectsEmployeesAssignedTo.layoutManager = LinearLayoutManager(this)
 
         val tasks = TaskManager.getTaskList()
-        val adapterTask = TaskAdapter(tasks)
+        val adapterTask = TaskCheckboxAdapter(tasks)
         rcvTaskAssignedToEmployee.adapter = adapterTask
         rcvTaskAssignedToEmployee.layoutManager = LinearLayoutManager(this)
     }

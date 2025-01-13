@@ -64,19 +64,19 @@ class ProjectActivity : AppCompatActivity(){
         }
         rcvDepartmentsThatContainProject = findViewById(R.id.rcvDepartmentsThatContainProject)
         temporaryDepList = DepartmentManager.getDepartmentList()
-        val adapterDep = DepartmentAdapter(temporaryDepList)
+        val adapterDep = DepartmentCheckboxAdapter(temporaryDepList)
         rcvDepartmentsThatContainProject.adapter = adapterDep
         rcvDepartmentsThatContainProject.layoutManager = LinearLayoutManager(this)
 
         rcvEmployeesInProject = findViewById(R.id.rcvEmployeeListInProject)
         temporaryEmpList = EmployeeManager.getEmployeeList()
-        val adapterEmp = EmployeeAdapter(temporaryEmpList)
+        val adapterEmp = EmployeeCheckboxAdapter(temporaryEmpList)
         rcvEmployeesInProject.adapter = adapterEmp
         rcvEmployeesInProject.layoutManager = LinearLayoutManager(this)
 
         rcvTaskListInProject = findViewById(R.id.rcvTaskListInProject)
         temporaryTaskList = TaskManager.getTaskList()
-        val adapterTask = TaskAdapter(temporaryTaskList)
+        val adapterTask = TaskCheckboxAdapter(temporaryTaskList)
         rcvTaskListInProject.adapter = adapterTask
         rcvTaskListInProject.layoutManager = LinearLayoutManager(this)
     }

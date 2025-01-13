@@ -28,8 +28,8 @@ class DepartmentActivity : AppCompatActivity() {
 
     private lateinit var rcvEmployeeInDepartment: RecyclerView
     private lateinit var rcvProjectInDepartment: RecyclerView
-    private lateinit var adapterEmp: EmployeeAdapter
-    private lateinit var adapterProj: ProjectAdapter
+    private lateinit var adapterEmp: EmployeeCheckboxAdapter
+    private lateinit var adapterProj: ProjectCheckboxAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,13 +73,13 @@ class DepartmentActivity : AppCompatActivity() {
         //getEmployeesUnderDepartment(selectedDepartmentID)
         employeeListToDisplay = mutableListOf()
         rcvEmployeeInDepartment = findViewById(R.id.rcvEmployeeInDepartment)
-        adapterEmp = EmployeeAdapter(employeeListToDisplay)
+        adapterEmp = EmployeeCheckboxAdapter(employeeListToDisplay)
         rcvEmployeeInDepartment.adapter = adapterEmp
         rcvEmployeeInDepartment.layoutManager = LinearLayoutManager(this)
 
         projectListToDisplay = mutableListOf()
         rcvProjectInDepartment = findViewById(R.id.rcvProjectInDepartment)
-        adapterProj = ProjectAdapter(projectListToDisplay)
+        adapterProj = ProjectCheckboxAdapter(projectListToDisplay)
         rcvProjectInDepartment.adapter = adapterProj
         rcvProjectInDepartment.layoutManager = LinearLayoutManager(this)
     }

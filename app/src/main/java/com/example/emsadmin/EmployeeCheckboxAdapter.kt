@@ -1,14 +1,13 @@
 package com.example.emsadmin
 
-
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class EmployeeAdapter(private val employeeList: MutableList<Employee>):
-    RecyclerView.Adapter<EmployeeAdapter.ViewHolder>(){
+class EmployeeCheckboxAdapter(private val employeeList: MutableList<Employee>):
+    RecyclerView.Adapter<EmployeeCheckboxAdapter.ViewHolder>(){
 
 
     inner class ViewHolder(itemView: android.view.View): RecyclerView.ViewHolder(itemView){
@@ -25,13 +24,13 @@ class EmployeeAdapter(private val employeeList: MutableList<Employee>):
         }
 
     }
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EmployeeAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EmployeeCheckboxAdapter.ViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.employee_recycle_view, parent, false)
+            .inflate(R.layout.employee_checkbox_recycle_view, parent, false)
         return ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: EmployeeAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: EmployeeCheckboxAdapter.ViewHolder, position: Int) {
         val employee = employeeList[position]
         holder.tvEmployeeNameAdapter.text = employee.getFullName()
     }

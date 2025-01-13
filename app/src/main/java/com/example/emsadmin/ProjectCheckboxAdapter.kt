@@ -8,8 +8,8 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class ProjectAdapter(private val projectList: MutableList<Project>):
-    RecyclerView.Adapter<ProjectAdapter.ViewHolder>(){
+class ProjectCheckboxAdapter(private val projectList: MutableList<Project>):
+    RecyclerView.Adapter<ProjectCheckboxAdapter.ViewHolder>(){
 
 
     inner class ViewHolder(itemView: android.view.View): RecyclerView.ViewHolder(itemView){
@@ -23,24 +23,22 @@ class ProjectAdapter(private val projectList: MutableList<Project>):
         init{
             itemView.setOnClickListener{
                 val position = adapterPosition
-                val clickedProject = projectList[position]
+                val clickedDepartment = projectList[position]
 
-                val intent = Intent(itemView.context, ProjectActivity::class.java)
-                intent.putExtra("project_name", clickedProject.getProjectName())
-                intent.putExtra("project_status", clickedProject.getStatus())
+                val intent = Intent(itemView.context, DepartmentActivity::class.java)
 
                 itemView.context.startActivity(intent)
             }
         }
 
     }
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProjectAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProjectCheckboxAdapter.ViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.project_recycle_view, parent, false)
+            .inflate(R.layout.project_checkbox_recycle_view, parent, false)
         return ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ProjectAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ProjectCheckboxAdapter.ViewHolder, position: Int) {
         val project = projectList[position]
         holder.tvProjectName.text = project.getProjectName()
         holder.tvProjectStatus.text = project.getStatus()
