@@ -13,7 +13,7 @@
         android:layout_width="332dp"
         android:layout_height="60dp"
         android:layout_marginTop="16dp"
-        android:hint="Task name"
+        android:hint="@string/task_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.531"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,13 +33,13 @@
             android:id="@+id/radioButtonTemporary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Temporary" />
+            android:text="@string/temporary" />
 
         <RadioButton
             android:id="@+id/radioButtonRecurring"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Recurring" />
+            android:text="@string/recurring" />
     </RadioGroup>
 
     <Spinner
@@ -76,7 +76,7 @@
         android:id="@+id/btnCreateAndAssignTask"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Create and Assign Task"
+        android:text="@string/create_and_assign_task"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -87,7 +87,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Assign Task to Department"
+        android:text="@string/assign_task_to_department"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.174"
         app:layout_constraintStart_toStartOf="parent"
@@ -98,7 +98,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Assign Task to Project"
+        android:text="@string/assign_task_to_project"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.154"
         app:layout_constraintStart_toStartOf="parent"
@@ -109,7 +109,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Assign Task to Employee"
+        android:text="@string/assign_task_to_employee"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.165"
         app:layout_constraintStart_toStartOf="parent"
@@ -122,7 +122,7 @@
         android:layout_marginStart="44dp"
         android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="task start date"
+        android:hint="@string/task_start_date"
         android:inputType="date"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -136,7 +136,7 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="date"
-        android:hint="task end date"
+        android:hint="@string/task_end_date"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.368"
@@ -150,7 +150,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
         android:layout_marginTop="12dp"
-        android:text="Start Date"
+        android:text="@string/start_date"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputTaskName" />
 
@@ -160,7 +160,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="104dp"
-        android:text="End Date"
+        android:text="@string/end_date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputTaskName" />
 

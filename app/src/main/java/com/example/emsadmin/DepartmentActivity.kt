@@ -2,15 +2,21 @@ package com.example.emsadmin
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Gravity
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.ImageButton
+import android.widget.PopupWindow
 import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,7 +26,6 @@ class DepartmentActivity : AppCompatActivity() {
 
     private lateinit var tvDepartmentNameDetails: TextView
     private lateinit var btnCreateDepartment: Button
-    private lateinit var btnCreateEmployee: Button
     private lateinit var spinnerDepartments: Spinner
     private lateinit var selectedDepartmentID: String
     private lateinit var employeeListToDisplay: MutableList<Employee>
@@ -41,7 +46,12 @@ class DepartmentActivity : AppCompatActivity() {
             insets
         }
         navigateToAddDepartmentActivity()
-        navigateToAddEmployeeActivity()
+        setUpPopup()
+
+        btnCreateDepartment = findViewById(R.id.btnCreateDepartment)
+        btnCreateDepartment.setOnClickListener{
+            navigateToAddDepartmentActivity()
+        }
 
         tvDepartmentNameDetails = findViewById(R.id.tvDepartmentNameDetails)
 
@@ -90,17 +100,9 @@ class DepartmentActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
-    private fun navigateToAddEmployeeActivity(){
-        val  btnCreateEmployee1: Button = findViewById(R.id.btnCreateEmployee)
-        btnCreateEmployee1.setOnClickListener{
-            val intent = Intent(this, AddEmployeeActivity::class.java)
-            startActivity(intent)
-        }
-    }
     private fun getEmployeesUnderDepartment(departmentID: String): MutableList<Employee>{
-        var employeeListToAdd: MutableList<Employee> = mutableListOf()
         val department = DepartmentManager.searchDepartmentObjByID(departmentID)
-        val employeeListInDepartment = department?.getEmployeeList()?: mutableListOf()
+        //val employeeListInDepartment = department?.getEmployeeList()?: mutableListOf()
         //val totalEmployeeList = EmployeeManager.getEmployeeList()
         /*
         for(strID in employeeListInDepartment){
@@ -108,12 +110,12 @@ class DepartmentActivity : AppCompatActivity() {
                 employeeListToAdd.add(it)
             }
         }*/
-        employeeListToAdd = EmployeeManager.getEmployeeList()
+        val employeeListToAdd: MutableList<Employee> = EmployeeManager.getEmployeeList()
         return employeeListToAdd
     }
     private fun getProjectUnderDepartment(departmentID: String): MutableList<Project>{
         val department = DepartmentManager.searchDepartmentObjByID(departmentID)
-        val employeeListInDepartment = department?.getEmployeeList()?: mutableListOf()
+        //val employeeListInDepartment = department?.getEmployeeList()?: mutableListOf()
         //val totalEmployeeList = EmployeeManager.getEmployeeList()
         /*
         for(strID in employeeListInDepartment){
@@ -123,5 +125,44 @@ class DepartmentActivity : AppCompatActivity() {
         }*/
         val projectListToAdd: MutableList<Project> = ProjectManager.projectList
         return projectListToAdd
+    }
+    private fun setUpPopup(){
+        val imgBtnAddAnyInDepartment: ImageButton = findViewById(R.id.imgBtnAddAnyInDepartment)
+        imgBtnAddAnyInDepartment.setOnClickListener {
+                view->
+            val inflater: LayoutInflater = getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
+            val popupView: View = inflater.inflate(R.layout.add_department_popup, null)
+
+            val popupWindow = PopupWindow(
+                popupView,
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                true
+            )
+            val btnAddTaskToDepartment: Button = popupView.findViewById(R.id.btnAddTaskToEmployee)
+            btnAddTaskToDepartment.setOnClickListener {
+                popupWindow.dismiss()
+                val intent = Intent(this, AddTaskActivity::class.java)
+                startActivity(intent)
+            }
+            val btnAddEmployeeToDepartment: Button = popupView.findViewById(R.id.btnAddTaskToProject)
+            btnAddEmployeeToDepartment.setOnClickListener {
+                popupWindow.dismiss()
+                val intent = Intent(this, AddDepartmentActivity::class.java)
+                startActivity(intent)
+            }
+            val btnAddProjectToDepartment: Button = popupView.findViewById(R.id.btnAddTaskToDepartment)
+            btnAddProjectToDepartment.setOnClickListener {
+                popupWindow.dismiss()
+                val intent = Intent(this, AddProjectActivity::class.java)
+                startActivity(intent)
+            }
+            popupWindow.elevation = 10f
+            popupWindow.setBackgroundDrawable(
+                ContextCompat.getDrawable(this, android.R.color.transparent)
+            )
+            popupWindow.isOutsideTouchable = true
+            popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0)
+        }
     }
 }

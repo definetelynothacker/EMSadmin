@@ -20,11 +20,11 @@
 
     <Button
         android:id="@+id/btnCreateDepartment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="202dp"
+        android:layout_height="49dp"
         android:layout_marginStart="20dp"
         android:layout_marginBottom="68dp"
-        android:text="Create New Department"
+        android:text="@string/create_new_department"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rcvProjectInDepartment"
@@ -35,7 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:text="Department name"
+        android:text="@string/department_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.053"
         app:layout_constraintStart_toStartOf="parent"
@@ -56,7 +56,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Employees"
+        android:text="@string/employees"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.046"
         app:layout_constraintStart_toStartOf="parent"
@@ -67,7 +67,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="Projects"
+        android:text="@string/projects"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.044"
         app:layout_constraintStart_toStartOf="parent"
@@ -83,17 +83,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvDepartmentProjects" />
 
-    <Button
-        android:id="@+id/btnCreateEmployee"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Create Employee"
+    <ImageButton
+        android:id="@+id/imgBtnAddAnyInDepartment"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/add_and_assign_data_structure_to_department"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.058"
+        app:layout_constraintHorizontal_bias="0.604"
         app:layout_constraintStart_toEndOf="@+id/btnCreateDepartment"
         app:layout_constraintTop_toBottomOf="@+id/rcvProjectInDepartment"
-        app:layout_constraintVertical_bias="0.276" />
+        app:layout_constraintVertical_bias="0.422"
+        app:srcCompat="@drawable/add_chat_icon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

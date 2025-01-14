@@ -1,13 +1,21 @@
 package com.example.emsadmin
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.Gravity
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Button
+import android.widget.ImageButton
+import android.widget.PopupWindow
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -65,5 +73,41 @@ class EmployeeActivity : AppCompatActivity() {
         val adapterTask = TaskCheckboxAdapter(tasks)
         rcvTaskAssignedToEmployee.adapter = adapterTask
         rcvTaskAssignedToEmployee.layoutManager = LinearLayoutManager(this)
+
+        navigateToAddEmployeeActivity()
+        setUpPopup()
+    }
+    private fun navigateToAddEmployeeActivity(){
+        val btnCreateEmployee: Button = findViewById(R.id.btnCreateEmployee)
+        btnCreateEmployee.setOnClickListener{
+            val intent = Intent(this, AddEmployeeActivity::class.java)
+            startActivity(intent)
+        }
+    }
+    private fun setUpPopup(){
+        val imgBtnAddAnyToEmployee: ImageButton = findViewById(R.id.imgBtnAddAnyToEmployee)
+        imgBtnAddAnyToEmployee.setOnClickListener{ view->
+            val inflater: LayoutInflater = getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
+            val popupView: View = inflater.inflate(R.layout.add_employee_popup, null)
+
+            val popupWindow = PopupWindow(
+                popupView,
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                true
+            )
+            val btnAddTaskToEmployee: Button = popupView.findViewById(R.id.btnAddTaskToEmployee)
+            btnAddTaskToEmployee.setOnClickListener{
+                popupWindow.dismiss()
+                val intent = Intent(this, AddTaskActivity::class.java)
+                startActivity(intent)
+            }
+            popupWindow.elevation = 10f
+            popupWindow.setBackgroundDrawable(
+                ContextCompat.getDrawable(this, android.R.color.transparent)
+            )
+            popupWindow.isOutsideTouchable = true
+            popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0)
+        }
     }
 }

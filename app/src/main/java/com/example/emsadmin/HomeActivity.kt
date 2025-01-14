@@ -56,13 +56,6 @@ class HomeActivity : AppCompatActivity(){
             startActivity(intent)
         }
     }
-    private fun navigateToAddEmployeeActivity(){
-        val btnCreateEmployee1: Button = findViewById(R.id.btnCreateEmployee)
-        btnCreateEmployee1.setOnClickListener{
-            val intent = Intent(this, AddEmployeeActivity::class.java)
-            startActivity(intent)
-        }
-    }
     private fun setUpPopup(){
         val imgBtnAddAny: ImageButton = findViewById(R.id.imgBtnAddAny)
         imgBtnAddAny.setOnClickListener{ view->

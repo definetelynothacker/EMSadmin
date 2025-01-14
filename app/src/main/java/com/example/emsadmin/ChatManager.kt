@@ -17,7 +17,7 @@ object ChatManager{
     private val chat2: Chat = Chat(isGroup = false, participantsList = empList)
     private val chat3: Chat = Chat(isGroup = false, participantsList = empList)
     private val chat4: Chat = Chat(isGroup = false, participantsList = empList)
-    private val chatList: MutableList<Chat> = mutableListOf(chat1, chat2, chat3, chat4)//default value
+    private val chatList: MutableList<Chat> = mutableListOf(chat1, chat2, chat3, chat4, chat2, chat2, chat2, chat3, chat4, chat2, chat2, chat2, chat3, chat4, chat2, chat2, chat2, chat3, chat4, chat2, chat2, chat2, chat3, chat4, chat2, chat2, chat2, chat3, chat4, chat2, chat2, chat2, chat3, chat4, chat2, chat2)//default value
 
     fun getChatList(): MutableList<Chat>{
         return chatList

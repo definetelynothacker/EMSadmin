@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:contentDescription="call"
+    android:background="#FFFFFF"
     tools:context=".ChatActivity">
 
     <ImageButton
@@ -15,9 +16,11 @@
         android:layout_marginStart="12dp"
         android:layout_marginTop="20dp"
         android:contentDescription="image of group profile picture"
+        android:scaleType="fitCenter"
+        android:background="@android:color/transparent"
         app:layout_constraintStart_toEndOf="@+id/imageButton3"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:src="@drawable/employee_default_logo" />
 
     <ImageButton
         android:id="@+id/imageButton3"
@@ -25,12 +28,14 @@
         android:layout_height="55dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
-        android:contentDescription="navigate out of chat"
+        android:contentDescription="@string/navigate_out_of_chat"
+        android:scaleType="fitCenter"
+        android:background="@android:color/transparent"
         app:layout_constraintBottom_toTopOf="@+id/rcvChatDisplay"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:src="@drawable/back_icon" />
 
     <ImageButton
         android:id="@+id/imageButton6"
@@ -38,12 +43,14 @@
         android:layout_height="55dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="20dp"
-        android:contentDescription="chat settings"
+        android:contentDescription="@string/chat_settings"
+        android:scaleType="fitCenter"
+        android:background="@android:color/transparent"
         app:layout_constraintBottom_toTopOf="@+id/rcvChatDisplay"
         app:layout_constraintStart_toEndOf="@+id/imageButton5"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:src="@drawable/settings_more" />
 
     <ImageButton
         android:id="@+id/imageButton5"
@@ -51,12 +58,14 @@
         android:layout_height="55dp"
         android:layout_marginStart="60dp"
         android:layout_marginTop="20dp"
-        android:contentDescription="call"
+        android:contentDescription="@string/call"
+        android:scaleType="fitCenter"
+        android:background="@android:color/transparent"
         app:layout_constraintBottom_toTopOf="@+id/rcvChatDisplay"
         app:layout_constraintStart_toEndOf="@+id/tvChatName"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:src="@drawable/phone_call_icon" />
 
     <TextView
         android:id="@+id/tvChatName"
@@ -64,7 +73,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:text="Chat Name"
+        android:text="@string/chat_name"
         app:layout_constraintStart_toEndOf="@+id/imageButton4"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -83,7 +92,7 @@
         android:layout_height="56dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="28dp"
-        android:hint="Message"
+        android:hint="@string/message"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rcvChatDisplay"
@@ -91,14 +100,15 @@
 
     <ImageButton
         android:id="@+id/imgBtnSendMessage"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:contentDescription="send message button"
-        android:scaleType="fitCenter"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:contentDescription="@string/send_message_button"
         app:layout_constraintBottom_toBottomOf="parent"
+        android:scaleType="fitCenter"
+        android:background="@android:color/transparent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textInputEditText"
         app:layout_constraintTop_toBottomOf="@+id/rcvChatDisplay"
-        tools:srcCompat="@drawable/send_message_icon" />
+        android:src="@drawable/send_message_icon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

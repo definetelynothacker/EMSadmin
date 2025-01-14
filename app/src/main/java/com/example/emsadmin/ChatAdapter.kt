@@ -16,19 +16,17 @@ class ChatAdapter(private val yourChatList: MutableList<Chat>):
         val tvReceiverName: TextView = itemView.findViewById(R.id.tvReceiverName)
         val tvLastSentMessageDate: TextView = itemView.findViewById(R.id.tvLastSentMessageDate)
         val tvLastSentMessageInChat: TextView = itemView.findViewById(R.id.tvLastSentMessageInChat)
-        /*
+
         init{
             itemView.setOnClickListener{
                 val position = adapterPosition
                 val clickedChat = yourChatList[position]
 
-                val intent = Intent(itemView.context, ProjectActivity::class.java)
-                intent.putExtra("project_name", clickedChat.getProjectName())
-                intent.putExtra("project_status", clickedChat.getStatus())
+                val intent = Intent(itemView.context, ChatActivity::class.java)
 
                 itemView.context.startActivity(intent)
             }
-        }*/
+        }
 
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatAdapter.ViewHolder {
@@ -39,6 +37,7 @@ class ChatAdapter(private val yourChatList: MutableList<Chat>):
 
     override fun onBindViewHolder(holder: ChatAdapter.ViewHolder, position: Int) {
         val chat = yourChatList[position]
+        holder.imgBtnProfileImageReceiverEmployee
         holder.tvReceiverName.text = chat.getReceiver().getFullName()
         val tempDefaults = listOf("hi", "1d")
         holder.tvLastSentMessageInChat.text = tempDefaults[0]
