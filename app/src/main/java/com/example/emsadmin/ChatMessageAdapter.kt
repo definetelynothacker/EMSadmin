@@ -47,4 +47,12 @@ class ChatMessageAdapter(private val messages: MutableList<Message>):
     class ReceivedMessageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val messageTextView: TextView = itemView.findViewById(R.id.tvMessageReceived)
     }
+    fun updateMessageList(newList: MutableList<Message>){
+        messages.clear()
+        val posStart = messages.size-1
+        val posEnd = newList.size-1
+        messages.addAll(newList)
+        notifyDataSetChanged()
+        //notifyItemRangeChanged(posStart, posEnd)
+    }
 }

@@ -2,8 +2,10 @@ package com.example.emsadmin
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
 import android.text.TextUtils
 import android.widget.Button
+import android.widget.EditText
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -11,6 +13,11 @@ import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.textfield.TextInputEditText
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var etEmail: EditText
+    private lateinit var etPassword: EditText
+    private lateinit var etConfirmPassword: EditText
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -22,6 +29,13 @@ class MainActivity : AppCompatActivity() {
         }
         //if(fillFields())
             navigateToHomeActivity()
+        etEmail = findViewById(R.id.etEmail)
+        etPassword = findViewById(R.id.etPassword)
+        etConfirmPassword = findViewById(R.id.etConfirmPassword)
+        val email = etEmail.text.toString()//admin1 or admin2
+        val password = etPassword.text.toString()//admin1 or admin2
+        val userID = etConfirmPassword.text.toString()//this is just temporary for me to test our sending messages between two admins
+        CurrentUser.updateCurrentUser(email, password, userID)
     }
     private fun fillFields(): Boolean {
         val etEmail: TextInputEditText = findViewById(R.id.etEmail)

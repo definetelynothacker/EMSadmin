@@ -2,6 +2,9 @@ package com.example.emsadmin
 
 object EmployeeManager{
     private val employeeList: MutableList<Employee> = mutableListOf(
+        Employee("admin1", "", employeeID = "admin1", isAdmin = true),
+        Employee("admin2", "", employeeID = "admin2", isAdmin = true),
+        Employee("John", "Crabs", employeeID = "EmpID_1", isAdmin = true),
         Employee("John", "Crabs", employeeID = "EmpID_1", isAdmin = true),
         Employee("Kyle", "Buffet", employeeID = "EmpID_2", isAdmin = true),
         Employee("Sarah", "Sandy", employeeID = "EmpID_3", isAdmin = true),

@@ -85,4 +85,9 @@
     <string name="task_list">Task List</string>
     <string name="create_task">Create Task</string>
     <string name="add_and_assign_data_structure_to_project">add and assign data strucutre to project</string>
+    <string name="add_employee">Add Employee</string>
+    <string name="add_task">Add Task</string>
+    <string name="add_project">Add Project</string>
+    <string name="add_department">Add Department</string>
+    <string name="item">Item</string>
 </resources>
