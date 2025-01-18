@@ -23,7 +23,7 @@ class ChatMessageAdapter(private val messages: MutableList<Message>):
         return if (viewType == TYPE_SENT) {
             val view = inflater.inflate(R.layout.chat_item_sent_msg_recycle_view, parent, false)
             SentMessageViewHolder(view)
-        } else {
+        } else{
             val view = inflater.inflate(R.layout.chat_item_received_msg_recycle_view, parent, false)
             ReceivedMessageViewHolder(view)
         }
@@ -47,12 +47,9 @@ class ChatMessageAdapter(private val messages: MutableList<Message>):
     class ReceivedMessageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val messageTextView: TextView = itemView.findViewById(R.id.tvMessageReceived)
     }
-    fun updateMessageList(newList: MutableList<Message>){
-        messages.clear()
-        val posStart = messages.size-1
-        val posEnd = newList.size-1
-        messages.addAll(newList)
-        notifyDataSetChanged()
-        //notifyItemRangeChanged(posStart, posEnd)
+    fun updateMessageList(message: Message) {
+        messages.add(message)
+        notifyItemInserted(messages.size - 1)
     }
+
 }

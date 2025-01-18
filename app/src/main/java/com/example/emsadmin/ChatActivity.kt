@@ -42,17 +42,24 @@ class ChatActivity : AppCompatActivity() {
         rcvChatDisplay.adapter = adapter
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://192.168.56.1:5000/")
+            .baseUrl("http://:5000/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
         val apiService = retrofit.create(ApiService::class.java)
 
         imgBtnSendMessage.setOnClickListener{
-            val message = getTextInputMessage()
+            val message = textInputEditText.text.toString()
             val otherUser = CurrentUser.getOtherUser().getEmployeeID()
             val senderUser = CurrentUser.getCurrentUser().getEmployeeID()
-            val messageToSend = mapOf("receiverID" to otherUser, "message" to message)
+            val messageToSend = mapOf("receiver" to otherUser, "message" to message)
+
+            val newMessage = Message(message, senderUser, otherUser)
+            //messageList.add(newMessage)
+            adapter.updateMessageList(newMessage)
+            rcvChatDisplay.scrollToPosition(messageList.size - 1)
+            textInputEditText.text?.clear()
+
             apiService.sendMessage(messageToSend).enqueue(object: Callback<Void>{
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {
                     if (response.isSuccessful)
@@ -61,21 +68,11 @@ class ChatActivity : AppCompatActivity() {
                         Toast.makeText(this@ChatActivity, "Failed to send message", Toast.LENGTH_SHORT).show()
                 }
                 override fun onFailure(call: Call<Void>, t: Throwable){
-                    // Handle failure to communicate with server
+                    //Handle failure to communicate with server
                     Toast.makeText(this@ChatActivity, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
                 }
             })
-            val newMessage = Message(message, senderUser, otherUser)
-            newMessage.addContent(message)
-            messageList.add(newMessage)
-            adapter.updateMessageList(messageList)
-            textInputEditText.text?.clear()
-            rcvChatDisplay.scrollToPosition(messageList.size - 1)
-
         }
-    }
-    private fun getTextInputMessage(): String{
-        return textInputEditText.text.toString()
     }
     private fun receiveMessages(apiService: ApiService, receiverId: String, senderID: String, receiverID: String, adapter: ChatMessageAdapter) {
         apiService.receiveMessages(receiverId).enqueue(object : Callback<ResponseBody> {
@@ -84,8 +81,8 @@ class ChatActivity : AppCompatActivity() {
                     val messages = response.body()?.string()?:""
                     val newMessage = Message(messages, senderID, receiverID)
                     newMessage.addContent(messages)
-                    messageList.add(newMessage)
-                    adapter.updateMessageList(messageList)
+                    //messageList.add(newMessage)
+                    adapter.updateMessageList(newMessage)
                 }
                 else
                     Toast.makeText(this@ChatActivity, "Failed to retrieve messages", Toast.LENGTH_SHORT).show()
@@ -97,8 +94,4 @@ class ChatActivity : AppCompatActivity() {
             }
         })
     }
-}
-
-private fun <T> Call<T>.enqueue(callback: Callback<Void>) {
-
 }
