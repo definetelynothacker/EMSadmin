@@ -55,7 +55,7 @@
         android:src="@drawable/settings_more" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/imgBtnAddChat"
         android:layout_width="65dp"
         android:layout_height="65dp"
         android:background="@android:color/transparent"
