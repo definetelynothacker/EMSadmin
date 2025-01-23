@@ -3,8 +3,6 @@ package com.example.emsadmin
 class Department(
     private var departmentName: String,
     private var departmentManager: String,//convert to Employee object eventually
-    //private var employeeList: MutableList<Employee>? = null,//not sure if i need this yet
-    //private var projectList: MutableList<Project>? = null,//not sure if this is needed either
     private var employeeIDList: MutableList<String> = mutableListOf(),
     private var projectIDList: MutableList<String> = mutableListOf(),
     private var taskIDList: MutableList<String> = mutableListOf(),

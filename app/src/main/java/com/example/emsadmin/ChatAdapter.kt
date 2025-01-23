@@ -23,28 +23,28 @@ class ChatAdapter(private val yourChatList: MutableList<Chat>):
                 val clickedChat = yourChatList[position]
 
                 val intent = Intent(itemView.context, ChatActivity::class.java)
-
+                intent.putExtra("chat_id", clickedChat.getChatID())
                 itemView.context.startActivity(intent)
             }
         }
 
     }
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatAdapter.ViewHolder{
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.chat_recycle_view, parent, false)
         return ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ChatAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ChatAdapter.ViewHolder, position: Int){
         val chat = yourChatList[position]
         holder.imgBtnProfileImageReceiverEmployee
-        holder.tvReceiverName.text = chat.getReceiver().getFullName()
+        holder.tvReceiverName.text = chat.getOtherEmployee().getFullName()
         val tempDefaults = listOf("hi", "1d")
         holder.tvLastSentMessageInChat.text = tempDefaults[0]
         holder.tvLastSentMessageDate.text = tempDefaults[1]
     }
 
-    override fun getItemCount(): Int {
+    override fun getItemCount(): Int{
         return yourChatList.size
     }
 }

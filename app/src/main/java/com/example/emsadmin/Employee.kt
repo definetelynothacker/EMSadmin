@@ -41,8 +41,26 @@ class Employee(
         return this.chatListSent
     }
     fun getMostRecentMessageFromChatList(): Message {
-        val chat = chatListSent.firstOrNull() ?: return Message("No message sent")
-        return chat.getMessageList().lastOrNull() ?: Message("No message sent")
+        val chat = chatListSent.firstOrNull() ?: return Message(
+            "No message sent",
+            senderID = TODO(),
+            receiverID = TODO(),
+            timestamp = TODO(),
+            messageType = TODO(),
+            isRead = TODO(),
+            status = TODO(),
+            messageID = TODO()
+        )
+        return chat.getMessageList().lastOrNull() ?: Message(
+            "No message sent",
+            senderID = TODO(),
+            receiverID = TODO(),
+            timestamp = TODO(),
+            messageType = TODO(),
+            isRead = TODO(),
+            status = TODO(),
+            messageID = TODO()
+        )
     }
     fun assignToDepartment(departmentID: String){
         departmentIDList.add(departmentID)

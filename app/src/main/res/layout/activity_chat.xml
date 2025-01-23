@@ -18,12 +18,12 @@
         android:contentDescription="image of group profile picture"
         android:scaleType="fitCenter"
         android:background="@android:color/transparent"
-        app:layout_constraintStart_toEndOf="@+id/imageButton3"
+        app:layout_constraintStart_toEndOf="@+id/imgBtnGoBackToChatHomeActivity"
         app:layout_constraintTop_toTopOf="parent"
         android:src="@drawable/employee_default_logo" />
 
     <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/imgBtnGoBackToChatHomeActivity"
         android:layout_width="55dp"
         android:layout_height="55dp"
         android:layout_marginStart="16dp"

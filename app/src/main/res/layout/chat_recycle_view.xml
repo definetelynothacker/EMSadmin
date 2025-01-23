@@ -41,6 +41,8 @@
                 android:layout_height="50dp"
                 android:contentDescription="@string/image_showing_profile_image_for_employee_on_the_receiving_side_of_the_chat"
                 app:layout_constraintBottom_toBottomOf="parent"
+                android:scaleType="fitCenter"
+                android:background="@android:color/transparent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0"

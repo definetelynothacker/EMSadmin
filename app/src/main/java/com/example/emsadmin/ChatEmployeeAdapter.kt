@@ -1,7 +1,6 @@
 package com.example.emsadmin
 
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageButton
@@ -13,7 +12,7 @@ class ChatEmployeeAdapter(private val employeeList: MutableList<Employee>):
 
 
     inner class ViewHolder(itemView: android.view.View): RecyclerView.ViewHolder(itemView){
-        val imgBtnEmployeeProfileImage2: ImageButton = itemView.findViewById(R.id.imgBtnEmployeeProfileImage2)
+        val imgBtnEmployeeProfileImage2: ImageButton = itemView.findViewById(R.id.imgViewEmployeeProfileImage2)
         val tvEmployeeName: TextView = itemView.findViewById(R.id.tvEmployeeName)
         /*
         init{

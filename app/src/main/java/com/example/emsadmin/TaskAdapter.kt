@@ -21,7 +21,7 @@ class TaskAdapter(private val taskList: MutableList<Task>):
                 val clickedTask = taskList[position]
 
                 val intent = Intent(itemView.context, TaskActivity::class.java)
-
+                intent.putExtra("task_id", clickedTask.getTaskID())
                 itemView.context.startActivity(intent)
             }
         }

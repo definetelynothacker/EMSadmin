@@ -26,8 +26,7 @@ class ProjectAdapter(private val projectList: MutableList<Project>):
                 val clickedProject = projectList[position]
 
                 val intent = Intent(itemView.context, ProjectActivity::class.java)
-                intent.putExtra("project_name", clickedProject.getProjectName())
-                intent.putExtra("project_status", clickedProject.getStatus())
+                intent.putExtra("project_id", clickedProject.getProjectID())
 
                 itemView.context.startActivity(intent)
             }

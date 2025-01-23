@@ -1,7 +1,9 @@
 package com.example.emsadmin
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageButton
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -22,6 +24,9 @@ class ChatActivity : AppCompatActivity() {
     private lateinit var textInputEditText: TextInputEditText
     private lateinit var imgBtnSendMessage: ImageButton
     private lateinit var messageList: MutableList<Message>
+    private lateinit var tvChatName: TextView
+
+    private lateinit var imgBtnGoBackToChatHomeActivity: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +37,14 @@ class ChatActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        val receivedData = intent.getStringExtra("chat_id")
+        tvChatName = findViewById(R.id.tvChatName)
+        val employeeInChatWithName: String = receivedData?.let { searchForChatName(it) }.toString()
+        tvChatName.text = employeeInChatWithName
+
+
+        navigateToChatHomeActivity()
+
         textInputEditText = findViewById(R.id.textInputEditText)
         imgBtnSendMessage = findViewById(R.id.imgBtnSendMessage)
 
@@ -42,7 +55,7 @@ class ChatActivity : AppCompatActivity() {
         rcvChatDisplay.adapter = adapter
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://:5000/")
+            .baseUrl("http://10.0.2.2:5000/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
@@ -93,5 +106,21 @@ class ChatActivity : AppCompatActivity() {
                 Toast.makeText(this@ChatActivity, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
             }
         })
+    }
+    private fun navigateToChatHomeActivity(){
+        val imgBtnGoBackToChatHomeActivity: ImageButton = findViewById(R.id.imgBtnGoBackToChatHomeActivity)
+        imgBtnGoBackToChatHomeActivity.setOnClickListener{
+            val intent = Intent(this, ChatHomeActivity::class.java)
+            startActivity(intent)
+        }
+    }
+    private fun searchForChatName(chatID: String): String{
+        val chatList = ChatManager.getChatList()
+        for(chat in chatList){
+            if(chat.getChatID() == chatID){
+                return chat.getOtherEmployee().getFullName()
+            }
+        }
+        return "null"
     }
 }

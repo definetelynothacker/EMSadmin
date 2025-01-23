@@ -20,6 +20,7 @@ class EmployeeAdapter(private val employeeList: MutableList<Employee>):
                 val clickedEmployee = employeeList[position]
 
                 val intent = Intent(itemView.context, EmployeeActivity::class.java)
+                intent.putExtra("employee_id", clickedEmployee.getEmployeeID())
                 itemView.context.startActivity(intent)
             }
         }

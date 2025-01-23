@@ -3,7 +3,7 @@ package com.example.emsadmin
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
@@ -12,7 +12,7 @@ class AddEmployeeChatAdapter(private val yourEmployeeList: MutableList<Employee>
 
 
     inner class ViewHolder(itemView: android.view.View): RecyclerView.ViewHolder(itemView){
-        val imgBtnEmployeeProfileImage2: ImageButton = itemView.findViewById(R.id.imgBtnEmployeeProfileImage2)
+        val imgViewEmployeeProfileImage2: ImageView = itemView.findViewById(R.id.imgViewEmployeeProfileImage2)
         val tvEmployeeName: TextView = itemView.findViewById(R.id.tvEmployeeName)
 
         init{
@@ -21,7 +21,7 @@ class AddEmployeeChatAdapter(private val yourEmployeeList: MutableList<Employee>
                 val clickedEmployee = yourEmployeeList[position]
 
                 val intent = Intent(itemView.context, ChatActivity::class.java)
-
+                intent.putExtra("employee_id", clickedEmployee.getEmployeeID())
                 itemView.context.startActivity(intent)
             }
         }
@@ -35,7 +35,7 @@ class AddEmployeeChatAdapter(private val yourEmployeeList: MutableList<Employee>
 
     override fun onBindViewHolder(holder: AddEmployeeChatAdapter.ViewHolder, position: Int) {
         val employee = yourEmployeeList[position]
-        holder.imgBtnEmployeeProfileImage2
+        holder.imgViewEmployeeProfileImage2
         holder.tvEmployeeName.text = employee.getFullName()
     }
 
