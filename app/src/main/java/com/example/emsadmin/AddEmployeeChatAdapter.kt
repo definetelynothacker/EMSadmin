@@ -21,7 +21,11 @@ class AddEmployeeChatAdapter(private val yourEmployeeList: MutableList<Employee>
                 val clickedEmployee = yourEmployeeList[position]
 
                 val intent = Intent(itemView.context, ChatActivity::class.java)
-                intent.putExtra("employee_id", clickedEmployee.getEmployeeID())
+                //intent.putExtra("employee_id", clickedEmployee.getEmployeeID())
+                val empList: MutableList<Employee> = mutableListOf(clickedEmployee, clickedEmployee)
+                val newChat = Chat(isGroup = false, participantsList = empList)
+                ChatManager.getChatList().add(newChat)
+                intent.putExtra("chat_id", newChat.getChatID())
                 itemView.context.startActivity(intent)
             }
         }

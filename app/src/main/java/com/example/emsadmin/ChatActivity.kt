@@ -23,8 +23,10 @@ class ChatActivity : AppCompatActivity() {
 
     private lateinit var textInputEditText: TextInputEditText
     private lateinit var imgBtnSendMessage: ImageButton
-    private lateinit var messageList: MutableList<Message>
+    //private lateinit var messageList: MutableList<Message>
+    private lateinit var chatMessageList: MutableList<Message>
     private lateinit var tvChatName: TextView
+    private lateinit var chatID: String
 
     private lateinit var imgBtnGoBackToChatHomeActivity: ImageButton
 
@@ -38,6 +40,10 @@ class ChatActivity : AppCompatActivity() {
             insets
         }
         val receivedData = intent.getStringExtra("chat_id")
+        chatID = receivedData.toString()
+
+        chatMessageList = ChatManager.findChat(chatID)?.getMessageList()!!
+
         tvChatName = findViewById(R.id.tvChatName)
         val employeeInChatWithName: String = receivedData?.let { searchForChatName(it) }.toString()
         tvChatName.text = employeeInChatWithName
@@ -48,8 +54,9 @@ class ChatActivity : AppCompatActivity() {
         textInputEditText = findViewById(R.id.textInputEditText)
         imgBtnSendMessage = findViewById(R.id.imgBtnSendMessage)
 
-        messageList = MessageManager.getMessageList()
-        val adapter = ChatMessageAdapter(messageList)
+        //messageList = MessageManager.getMessageList()
+        //val adapter = ChatMessageAdapter(messageList)
+        val adapter = ChatMessageAdapter(chatMessageList)
         val rcvChatDisplay: RecyclerView = findViewById(R.id.rcvChatDisplay)
         rcvChatDisplay.layoutManager = LinearLayoutManager(this)
         rcvChatDisplay.adapter = adapter
@@ -61,28 +68,36 @@ class ChatActivity : AppCompatActivity() {
 
         val apiService = retrofit.create(ApiService::class.java)
 
-        imgBtnSendMessage.setOnClickListener{
+        imgBtnSendMessage.setOnClickListener {
             val message = textInputEditText.text.toString()
             val otherUser = CurrentUser.getOtherUser().getEmployeeID()
             val senderUser = CurrentUser.getCurrentUser().getEmployeeID()
             val messageToSend = mapOf("receiver" to otherUser, "message" to message)
 
             val newMessage = Message(message, senderUser, otherUser)
+            chatMessageList.add(newMessage)
             //messageList.add(newMessage)
             adapter.updateMessageList(newMessage)
-            rcvChatDisplay.scrollToPosition(messageList.size - 1)
+            //rcvChatDisplay.scrollToPosition(messageList.size - 1)
+            rcvChatDisplay.scrollToPosition(chatMessageList.size - 1)
             textInputEditText.text?.clear()
 
-            apiService.sendMessage(messageToSend).enqueue(object: Callback<Void>{
+            apiService.sendMessage(messageToSend).enqueue(object : Callback<Void> {
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {
                     if (response.isSuccessful)
                         receiveMessages(apiService, otherUser, senderUser, otherUser, adapter)
                     else
-                        Toast.makeText(this@ChatActivity, "Failed to send message", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this@ChatActivity,
+                            "Failed to send message",
+                            Toast.LENGTH_SHORT
+                        ).show()
                 }
-                override fun onFailure(call: Call<Void>, t: Throwable){
+
+                override fun onFailure(call: Call<Void>, t: Throwable) {
                     //Handle failure to communicate with server
-                    Toast.makeText(this@ChatActivity, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@ChatActivity, "Error: ${t.message}", Toast.LENGTH_SHORT)
+                        .show()
                 }
             })
         }

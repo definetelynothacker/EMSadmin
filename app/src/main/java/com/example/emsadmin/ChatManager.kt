@@ -22,4 +22,14 @@ object ChatManager{
     fun getChatList(): MutableList<Chat>{
         return chatList
     }
+    fun findChat(chatID: String): Chat? {
+        val chatList = getChatList()
+        for(chat in chatList){
+            if(chat.getChatID() == chatID){
+                return chat
+            }
+        }
+        return null
+    }
+
 }
