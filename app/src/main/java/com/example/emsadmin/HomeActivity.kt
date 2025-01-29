@@ -30,6 +30,7 @@ class HomeActivity : AppCompatActivity(){
         }
         navigateToAddDepartmentActivity()
         navigateToAddProjectActivity()
+        navigateToEmailHomeActivity()
         navigateToChatHomeActivity()
         setUpPopup()
         renderProjectList()
@@ -46,6 +47,13 @@ class HomeActivity : AppCompatActivity(){
         val btnMoreProjects: Button = findViewById(R.id.btnCreateProjectOption)
         btnMoreProjects.setOnClickListener{
             val intent = Intent(this, AddProjectActivity::class.java)
+            startActivity(intent)
+        }
+    }
+    private fun navigateToEmailHomeActivity(){
+        val imgBtnInbox: ImageButton = findViewById(R.id.imgBtnInbox)
+        imgBtnInbox.setOnClickListener{
+            val intent = Intent(this, EmailHomeActivity::class.java)
             startActivity(intent)
         }
     }

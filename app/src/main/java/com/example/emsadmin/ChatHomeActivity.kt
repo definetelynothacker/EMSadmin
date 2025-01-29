@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView
 
 class ChatHomeActivity : AppCompatActivity(){
 
+    private lateinit var chatAdapterInst: ChatAdapter
+
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -27,7 +29,7 @@ class ChatHomeActivity : AppCompatActivity(){
     private fun renderChatList(){
         val rcvChats: RecyclerView = findViewById(R.id.rcvChats)
         val chatList: MutableList<Chat> = ChatManager.getChatList()
-        val chatAdapterInst = ChatAdapter(chatList)
+        chatAdapterInst = ChatAdapter(chatList)
         rcvChats.adapter = chatAdapterInst
         rcvChats.layoutManager = LinearLayoutManager(this)
     }

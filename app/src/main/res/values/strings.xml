@@ -90,4 +90,11 @@
     <string name="add_project">Add Project</string>
     <string name="add_department">Add Department</string>
     <string name="item">Item</string>
+    <string name="search_emails">Search emails</string>
+    <string name="create_new_email">create new email</string>
+    <string name="email_profile">email profile</string>
+    <string name="create_email_draft">create email draft</string>
+    <string name="time_sent">Time Sent</string>
+    <string name="body">Body</string>
+    <string name="subject">Subject</string>
 </resources>

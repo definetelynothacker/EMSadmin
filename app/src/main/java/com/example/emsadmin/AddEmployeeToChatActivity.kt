@@ -35,7 +35,7 @@ class AddEmployeeToChatActivity : AppCompatActivity() {
         val selectedEmp: MutableList<Employee> = mutableListOf()
         val empRemList = empList.subtract(selectedEmp.toSet())
         val empNewList = empRemList.toMutableList()
-        val chat1: Chat = Chat(isGroup = false, participantsList = empNewList)
+        val chat1 = Chat(isGroup = false, participantsList = empNewList)
         val chatList = ChatManager.getChatList()
         chatList.add(0, chat1)
         val adapter = AddEmployeeChatAdapter(empRemList.toMutableList())
