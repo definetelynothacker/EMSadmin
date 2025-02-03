@@ -3,7 +3,7 @@ package com.example.emsadmin
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
@@ -12,7 +12,7 @@ class EmailAdapter(private val yourEmailList: MutableList<Email>):
 
 
     inner class ViewHolder(itemView: android.view.View): RecyclerView.ViewHolder(itemView){
-        val imgViewEmailImage: ImageButton = itemView.findViewById(R.id.imgViewEmailImage)
+        val imgViewEmailImage: ImageView = itemView.findViewById(R.id.imgViewEmailImage)
         val tvEmailSubject: TextView = itemView.findViewById(R.id.tvEmailSubject)
         val tvEmailBody: TextView = itemView.findViewById(R.id.tvEmailBody)
         val tvEmailTimeSent: TextView = itemView.findViewById(R.id.tvEmailTimeSent)
@@ -27,6 +27,7 @@ class EmailAdapter(private val yourEmailList: MutableList<Email>):
                 itemView.context.startActivity(intent)
             }
         }
+
 
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EmailAdapter.ViewHolder{
