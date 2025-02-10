@@ -1,5 +1,6 @@
 package com.example.emsadmin
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageButton
 import androidx.activity.enableEdgeToEdge
@@ -15,7 +16,6 @@ class EmailHomeActivity : AppCompatActivity(){
     private lateinit var rcvEmailsInbox: RecyclerView
     private lateinit var textInputEditTextSearchEmail: TextInputEditText
     private lateinit var imgBtnEmailProfileSettings: ImageButton
-    private lateinit var imgBtnCompose: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
@@ -26,14 +26,23 @@ class EmailHomeActivity : AppCompatActivity(){
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        navigateToEmailComposeActivity()
+
         rcvEmailsInbox = findViewById(R.id.rcvEmailsInbox)
         textInputEditTextSearchEmail = findViewById(R.id.textInputEditTextSearchEmail)
         imgBtnEmailProfileSettings = findViewById(R.id.imgBtnEmailProfileSettings)
-        imgBtnCompose = findViewById(R.id.imgBtnCompose)
 
         val emailList = EmailManager.getEmailList()
         val adapter = EmailAdapter(emailList)
         rcvEmailsInbox.adapter = adapter
         rcvEmailsInbox.layoutManager = LinearLayoutManager(this)
+
+    }
+    private fun navigateToEmailComposeActivity(){
+        val compose: ImageButton = findViewById(R.id.imgBtnCompose)
+        compose.setOnClickListener{
+            val intent = Intent(this, EmailComposeActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

@@ -39,7 +39,8 @@ android {
 }
 
 dependencies {
-
+    implementation(libs.android.mail)
+    implementation(libs.android.activation)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

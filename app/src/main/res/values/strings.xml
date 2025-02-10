@@ -97,4 +97,5 @@
     <string name="time_sent">Time Sent</string>
     <string name="body">Body</string>
     <string name="subject">Subject</string>
+    <string name="compose">Compose</string>
 </resources>
