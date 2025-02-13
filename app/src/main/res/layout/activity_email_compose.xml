@@ -14,6 +14,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginTop="4dp"
         android:background="@android:color/transparent"
+        android:contentDescription="Go back to previous activity"
         android:padding="15dp"
         android:scaleType="fitCenter"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,6 +27,7 @@
         android:layout_height="65dp"
         android:layout_marginStart="124dp"
         android:background="@android:color/transparent"
+        android:contentDescription="attach documents or images"
         android:padding="15dp"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="@+id/imgBtnBackCompose"
@@ -39,6 +41,7 @@
         android:layout_height="65dp"
         android:layout_marginStart="16dp"
         android:background="@android:color/transparent"
+        android:contentDescription="Send email"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="@+id/imgBtnAttach"
         app:layout_constraintStart_toEndOf="@+id/imgBtnAttach"
@@ -52,6 +55,7 @@
         android:layout_height="65dp"
         android:layout_marginStart="8dp"
         android:background="@android:color/transparent"
+        android:contentDescription="email settings"
         android:padding="10dp"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="@+id/imgBtnSendEmail"
@@ -63,9 +67,9 @@
         app:srcCompat="@drawable/settings_more" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/textInputEditText3"
+        android:id="@+id/textInputEditTextFrom"
         android:layout_width="325dp"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:hint="From"
@@ -75,33 +79,36 @@
         app:layout_constraintTop_toBottomOf="@+id/imgBtnBackCompose" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/textInputEditText4"
+        android:id="@+id/textInputEditTextTo"
         android:layout_width="325dp"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:hint="To"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputEditText3" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputEditTextFrom" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/textInputEditText2"
+        android:id="@+id/textInputEditTextSubject"
         android:layout_width="325dp"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:hint="Subject"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputEditText4" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputEditTextTo" />
 
     <EditText
-        android:id="@+id/editTextTextMultiLine"
+        android:id="@+id/editTextTextMultiLineCompose"
         android:layout_width="378dp"
         android:layout_height="425dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:ems="10"
         android:gravity="start|top"
         android:hint="@string/compose"
@@ -109,5 +116,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputEditText2" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputEditTextSubject" />
 </androidx.constraintlayout.widget.ConstraintLayout>

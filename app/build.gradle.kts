@@ -16,7 +16,14 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
-
+    packagingOptions {
+        resources {
+            excludes += "META-INF/NOTICE.md"
+            excludes += "META-INF/NOTICE"
+            excludes += "META-INF/LICENSE.md"
+            excludes += "META-INF/LICENSE"
+        }
+    }
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -39,8 +46,9 @@ android {
 }
 
 dependencies {
+    implementation(libs.jetbrains.kotlinx.coroutines.android)
     implementation(libs.android.mail)
-    implementation(libs.android.activation)
+    implementation(libs.mail.android.activation)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
