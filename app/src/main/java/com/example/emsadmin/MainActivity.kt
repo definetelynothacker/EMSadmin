@@ -36,6 +36,8 @@ class MainActivity : AppCompatActivity() {
         val password = etPassword.text.toString()//admin1 or admin2
         val userID = etConfirmPassword.text.toString()//this is just temporary for me to test our sending messages between two admins
         CurrentUser.updateCurrentUser(email, password, userID)
+        val emailAccount = EmailAccount(emailAddress = email)
+        EmailAccountsManager.getEmailAccountsList().add(emailAccount)
     }
     private fun fillFields(): Boolean {
         val etEmail: TextInputEditText = findViewById(R.id.etEmail)

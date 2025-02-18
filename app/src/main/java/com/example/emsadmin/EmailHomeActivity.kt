@@ -2,9 +2,16 @@ package com.example.emsadmin
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Gravity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageButton
+import android.widget.PopupWindow
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,6 +34,7 @@ class EmailHomeActivity : AppCompatActivity(){
             insets
         }
         navigateToEmailComposeActivity()
+        setUpPopup()
 
         rcvEmailsInbox = findViewById(R.id.rcvEmailsInbox)
         textInputEditTextSearchEmail = findViewById(R.id.textInputEditTextSearchEmail)
@@ -43,6 +51,31 @@ class EmailHomeActivity : AppCompatActivity(){
         compose.setOnClickListener{
             val intent = Intent(this, EmailComposeActivity::class.java)
             startActivity(intent)
+        }
+    }
+    private fun setUpPopup(){
+        val imgBtnEmailProfileSettings: ImageButton = findViewById(R.id.imgBtnEmailProfileSettings)
+        imgBtnEmailProfileSettings.setOnClickListener{ view->
+            val inflater: LayoutInflater = getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
+            val popupView: View = inflater.inflate(R.layout.email_accounts_popup, null)
+
+            val popupWindow = PopupWindow(
+                popupView,
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                true
+            )
+            val rcvEmailAccountsSetUp: RecyclerView = popupView.findViewById(R.id.rcvEmailAccountsSetUp)
+            val adapter = EmailAccountAdapter(EmailAccountsManager.getEmailAccountsList())
+            rcvEmailAccountsSetUp.adapter = adapter
+            rcvEmailAccountsSetUp.layoutManager = LinearLayoutManager(this)
+
+            popupWindow.elevation = 10f
+            popupWindow.setBackgroundDrawable(
+                ContextCompat.getDrawable(this, android.R.color.transparent)
+            )
+            popupWindow.isOutsideTouchable = true
+            popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0)
         }
     }
 }
