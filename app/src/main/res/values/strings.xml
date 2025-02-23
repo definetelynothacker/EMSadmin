@@ -98,4 +98,9 @@
     <string name="body">Body</string>
     <string name="subject">Subject</string>
     <string name="compose">Compose</string>
+    <string name="server">Server</string>
+    <string name="personal_pop3">Personal (POP3)</string>
+    <string name="what_type_of_account_is_this">What type of account is this?</string>
+    <string name="email_address">Email address</string>
+    <string name="personal_imap">Personal (IMAP)</string>
 </resources>

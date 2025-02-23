@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.PopupWindow
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -69,6 +70,11 @@ class EmailHomeActivity : AppCompatActivity(){
             val adapter = EmailAccountAdapter(EmailAccountsManager.getEmailAccountsList())
             rcvEmailAccountsSetUp.adapter = adapter
             rcvEmailAccountsSetUp.layoutManager = LinearLayoutManager(this)
+
+            val tvAddAnotherAccount: TextView = findViewById(R.id.tvAddAnotherAccount)
+            tvAddAnotherAccount.setOnClickListener{
+
+            }
 
             popupWindow.elevation = 10f
             popupWindow.setBackgroundDrawable(
